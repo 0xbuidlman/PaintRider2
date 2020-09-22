@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
+[ext_resource path="res://Images/player/character_pixel.png" type="Texture" id=2]
+[ext_resource path="res://Images/player/character.png" type="Texture" id=3]
+[ext_resource path="res://Audio/e2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/e.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/p.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/s.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/c.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/b.wav" type="AudioStream" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "mode"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.12, 0.12 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.13, 0.13 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/mode = SubResource( 2 )
+
+[node name="e1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "sfx"
+
+[node name="e2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "sfx"
+
+[node name="p" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "sfx2"
+
+[node name="s" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -13.765
+
+[node name="c" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.295
+
+[node name="b" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -12.235
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -1,0 +1,296 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/under.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Canvas.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/bars/red.png" type="Texture" id=5]
+[ext_resource path="res://Images/over.png" type="Texture" id=6]
+[ext_resource path="res://Images/bars/bar_explode.png" type="Texture" id=7]
+[ext_resource path="res://Images/titlewhite.png" type="Texture" id=8]
+[ext_resource path="res://fonts/f.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Audio/Loop.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/pr2.ogg" type="AudioStream" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 630.886, -268.37 ), Vector2( 630.89, -303.338 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ProgressBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/ProgressBar2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 2.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 150, -300 ), Vector2( 150, -260 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:title_osc")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 14.7926 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "reset"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:do_reset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float time = 0.0;
+uniform float speed = 2.5;
+uniform float mult = 0.05;
+
+void fragment(){
+
+	vec2 offset;
+	offset.x = sin(FRAGCOORD.y * 0.2) * sin(time * speed) * mult + sin(time * speed) * mult;
+	offset.y = sin(FRAGCOORD.y) * sin(time) * 0.01;
+	
+	COLOR = texture( SCREEN_TEXTURE, SCREEN_UV + offset);
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/time = 0.0
+shader_param/speed = 2.5
+shader_param/mult = 0.1
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Canvas" parent="." instance=ExtResource( 4 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 150, -300 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -600 )
+anchor_mode = 0
+current = true
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+zoom = Vector2( 10, 10 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="TextureProgress" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 11.1993
+margin_top = 545.66
+margin_right = 611.199
+margin_bottom = 745.66
+rect_scale = Vector2( 0.294389, 0.294389 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar2" type="TextureProgress" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 184.639
+margin_top = 553.877
+margin_right = 784.639
+margin_bottom = 753.877
+rect_scale = Vector2( 0.218688, 0.218688 )
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heads" type="Node2D" parent="CanvasLayer"]
+visible = false
+position = Vector2( 950, 0 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 7.88107
+margin_top = 11.0595
+margin_right = 282.881
+margin_bottom = 80.0595
+custom_fonts/font = SubResource( 1 )
+text = "High Score"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( 630.886, -268.37 )
+scale = Vector2( 0.480682, 0.480682 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/titlesway = SubResource( 2 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/fadeout = SubResource( 3 )
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+anims/player_title = SubResource( 4 )
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 5 )
+anims/reset = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 8 )
+margin_top = -1445.0
+margin_right = 2464.0
+margin_bottom = 145.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -378.0
+margin_top = -1503.0
+margin_right = 2940.0
+margin_bottom = 440.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+bus = "music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "music"
+[connection signal="bomb" from="Player" to="Canvas" method="on_bomb"]
+[connection signal="bonus" from="Player" to="." method="on_bonus"]
+[connection signal="change" from="Player" to="." method="on_change"]
+[connection signal="dead" from="Player" to="." method="on_dead"]
+[connection signal="start_reset" from="Player" to="." method="on_reset"]
+[connection signal="vroom" from="Player" to="Canvas" method="paint"]
