@@ -96,8 +96,16 @@ func _physics_process(delta):
 			stage = 6
 		elif stage == 6 and r > 300000:
 			$BombSpawner2.mode_mode = 2
+			$BombSpawner2.max_at_once = 2
 			$PaintSpawner.min_time = 5
 			$PaintSpawner.max_time = 9
+			$StarSpawner.max_at_once = 2
+			stage = 7
+		elif stage == 7 and r > 400000:
+			$BombSpawner2.max_at_once = 3
+			stage = 8
+		elif stage == 8 and r > 500000:
+			$StarSpawner.min_time = 0
 
 func remove_all(s):
 	for c in s.get_children():
@@ -140,7 +148,8 @@ func paint(p, v, r = true):
 		var s = Stroke.instance()
 		var color = $"/root/Global".color
 		if color >= 6:
-			s.get_child(0).width = 80
+			s.get_child(0).width = 60
+			s.life = 8
 		s.get_child(0).texture = strokes[color]
 		s.position = Vector2(pos, 0)
 		s.add_point(p, 0)

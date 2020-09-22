@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bluebrick.png-fb26e96f4b15c490256ed46d2cae1823.stex"
+path="res://.import/characterblue.png-e2d22b59bedf237055b84b806cd53566.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/bluebrick.png"
-dest_files=[ "res://.import/bluebrick.png-fb26e96f4b15c490256ed46d2cae1823.stex" ]
+source_file="res://Images/characters/characterblue.png"
+dest_files=[ "res://.import/characterblue.png-e2d22b59bedf237055b84b806cd53566.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

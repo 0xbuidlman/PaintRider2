@@ -1,14 +1,23 @@
 extends Node2D
 
+var characters = [
+	preload("res://Images/characters/characterred.png"),
+	preload("res://Images/characters/characterblue.png"),
+	preload("res://Images/characters/charactergreen.png"),
+	preload("res://Images/characters/characterorange.png"),
+	preload("res://Images/characters/character.png"),
+	preload("res://Images/characters/characteryellow.png")
+]
+
 const GRAVITY = [1100, 2000]
 const FORCE = [-3000, -6000]
-const MIN_VELOCITY = [-800, -400]
-const MAX_VELOCITY = [550, 200]
+const MIN_VELOCITY = [-800, -300]
+const MAX_VELOCITY = [550, 150]
 const VEL_CATCH = [10, 4]
 
-const MIN_SPEED = [600.0, 2300.0]
-const MAX_SPEED = [1800.0, 2500.0]
-const RANGE = [[600.0, 2400.0], [600.0, 2400.0]]
+const MIN_SPEED = [600.0, 2700.0]
+const MAX_SPEED = [1800.0, 2900.0]
+const RANGE = [[600.0, 2400.0], [600.0, 2800.0]]
 const FRICTION = [80.0, 50.0]
 
 const SPEED_UP = [500, 800]
@@ -49,13 +58,15 @@ signal change()
 func _ready():
 	randomize()
 	$"/root/Global".color = randi() % 6
+	$Sprite.texture = characters[$"/root/Global".color]
 	emit_signal("change")
 
 func _input(event):
-	if event.is_action_pressed("button") or (event is InputEventScreenTouch and event.is_pressed()):
+	if event.is_action_pressed("button"):
 		up = true
-	elif event.is_action_released("button") or (event is InputEventScreenTouch and not event.is_pressed()):
+	elif event.is_action_released("button"):
 		up = false
+
 func _physics_process(delta):
 	
 	if $"/root/Global".active and not $"/root/Global".end:
@@ -64,11 +75,12 @@ func _physics_process(delta):
 		if mode == 1 and paint <= NORMAL_PAINT:
 			$"/root/Global".mode = 0
 			$"/root/Global".color = randi() % 6
+			$Sprite.texture = characters[$"/root/Global".color]
 			emit_signal("change")
 			scale = Vector2(1, 1)
 			mode = 0
 			target_speed = 1200
-			$AnimationPlayer.play_backwards("mode")
+			$Sprite.scale = Vector2(0.12, 0.12)
 		
 		velocity += GRAVITY[mode] * delta
 		var z_amount = clamp((speed - RANGE[mode][0]) / (RANGE[mode][1] - RANGE[mode][0]), 0, 1)
@@ -103,7 +115,6 @@ func _physics_process(delta):
 		position.y += velocity * delta
 		
 		$Sprite.rotation = velocity * 0.001 + 0.2
-		$Sprite2.rotation = velocity * 0.001 + 0.2
 		
 		if target_speed > MIN_SPEED[mode]:
 			target_speed -= FRICTION[mode] * delta
@@ -149,6 +160,7 @@ func _on_Area2D_area_entered(area):
 	elif id == 1 and paint < NORMAL_PAINT:
 		paint = NORMAL_PAINT
 		$"/root/Global".color = area.get_parent().cid
+		$Sprite.texture = characters[$"/root/Global".color]
 		$b.play()
 		emit_signal("change")
 		if painting:
@@ -160,8 +172,10 @@ func _on_Area2D_area_entered(area):
 		scale = Vector2(1.5, 1.5)
 		$"/root/Global".mode = 1
 		$"/root/Global".color = 6
+		velocity -= 1800
+		$Sprite.texture = characters[4]
 		emit_signal("change")
-		$AnimationPlayer.play("mode")
+		$Sprite.scale = Vector2(0.13, 0.13)
 		if painting:
 			emit_signal("vroom", brush_pos(0), -1)
 			emit_signal("vroom", brush_pos(0), 1)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coolflames.png-70f2b8ed8b45b61b04c3292c16540da9.stex"
+path="res://.import/characterorange.png-1e074de477f79f6191a9531dd1904b83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/coolflames.png"
-dest_files=[ "res://.import/coolflames.png-70f2b8ed8b45b61b04c3292c16540da9.stex" ]
+source_file="res://Images/characters/characterorange.png"
+dest_files=[ "res://.import/characterorange.png-1e074de477f79f6191a9531dd1904b83.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

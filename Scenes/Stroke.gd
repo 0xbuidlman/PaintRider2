@@ -6,6 +6,7 @@ var dists = []
 var length = 0.0
 var num = 0
 var real = true
+var life = 40
 
 func _ready():
 	$Line2D.points = PoolVector2Array()
@@ -29,7 +30,8 @@ func add_point(pos, v):
 		$Line2D.points = PoolVector2Array(points)
 
 func jump():
-	if real:
+	if real and life > 0:
 		position.x += 15000
 	else:
 		queue_free()
+	life -= 1

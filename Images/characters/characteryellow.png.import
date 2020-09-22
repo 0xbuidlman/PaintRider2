@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/redbrickflame.png-b835c0b2f01b2cce7c5c99d9e30043d1.stex"
+path="res://.import/characteryellow.png-2c75a03ee7257ab114177f422e9c0e94.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/redbrickflame.png"
-dest_files=[ "res://.import/redbrickflame.png-b835c0b2f01b2cce7c5c99d9e30043d1.stex" ]
+source_file="res://Images/characters/characteryellow.png"
+dest_files=[ "res://.import/characteryellow.png-2c75a03ee7257ab114177f422e9c0e94.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
